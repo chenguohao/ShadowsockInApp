@@ -123,6 +123,8 @@ unsigned int sweep(void)
    last_active = clients;
    client_list = clients->next;
 
+   struct client_state *last_idle = NULL;
+    
    while (NULL != client_list)
    {
       csp = &client_list->csp;
@@ -174,6 +176,17 @@ unsigned int sweep(void)
 
          active_threads++;
 
+          if (!(csp->flags & CSP_FLAG_SERVER_SOCKET_TAINTED))
+          {
+              if (last_idle) {
+                  if (last_idle->idle_time < csp->idle_time) {
+                      last_idle = csp;
+                  }
+              } else {
+                  last_idle = csp;
+              }
+          }
+          
          last_active = client_list;
          client_list = client_list->next;
       }
@@ -214,11 +227,20 @@ unsigned int sweep(void)
 
          client_list = last_active->next;
       }
+       
    }
 
    nfl = files;
    fl = files->next;
-
+   if (last_idle) {
+       if (active_threads >= last_idle->config->max_client_connections) {
+           last_idle->flags |= CSP_FLAG_SERVER_SOCKET_TAINTED;
+           log_error(LOG_LEVEL_INFO, "bcm recovery last fd: %d, active thread: %d, idle: %d " ,
+                     last_idle->cfd, active_threads, last_idle->idle_time);
+       }
+   }
+   
+    
    while (fl != NULL)
    {
       if ((0 == fl->active) && (NULL != fl->unloader))

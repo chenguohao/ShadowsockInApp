@@ -2116,14 +2116,34 @@ static void chat(struct client_state *csp)
       }
 #endif  /* FEATURE_CONNECTION_KEEP_ALIVE */
 
-    timeout.tv_sec = csp->config->socket_timeout;
-      timeout.tv_usec = 0;
-      n = select((int)maxfd+1, &rfds, NULL, NULL, &timeout);
+       while (csp->idle_time < csp->config->socket_timeout
+              &&  !(csp->flags & CSP_FLAG_SERVER_SOCKET_TAINTED))  {
+           timeout.tv_sec = 1;
+           timeout.tv_usec = 0;
+           n = select((int)maxfd+1, &rfds, NULL, NULL, &timeout);
+           
+           if (n == 0)
+           {
+               csp->idle_time++;
+               continue;
+           }
+           else if (n < 0)
+           {
+               log_error(LOG_LEVEL_ERROR, "select() failed!: %E");
+               mark_server_socket_tainted(csp);
+               return;
+           }
+           break;
+       }
 
-      if (n == 0)
+
+      if (csp->idle_time >= csp->config->socket_timeout
+          || (csp->flags & CSP_FLAG_SERVER_SOCKET_TAINTED) )
       {
          log_error(LOG_LEVEL_ERROR,
-            "Didn't receive data in time: %s", http->url);
+                   "Didn't receive data in time: %d  %s",
+                   csp->idle_time,
+                   http->url);
          if ((byte_count == 0) && (http->ssl == 0))
          {
             send_crunch_response(csp, error_response(csp, "connection-timeout"));
@@ -2131,13 +2151,9 @@ static void chat(struct client_state *csp)
          mark_server_socket_tainted(csp);
          return;
       }
-      else if (n < 0)
-      {
-         log_error(LOG_LEVEL_ERROR, "select() failed!: %E");
-         mark_server_socket_tainted(csp);
-         return;
-      }
 
+       csp->idle_time = 0;
+       
       /*
        * This is the body of the browser's request,
        * just read and write it.
@@ -3421,7 +3437,16 @@ static void listen_loop(shadowpath_cb cb, void *data)
     unsigned int active_threads = 0;
 
     config = load_config();
+    config->socket_timeout = 10;
+    
+    log_error(LOG_LEVEL_INFO, "bcm max_conn: %d, keepalive: %d, threaded: %d, socket_timeout: %d,  " ,
+              config->max_client_connections,
+              config->keep_alive_timeout,
+              config->multi_threaded,
+              config->socket_timeout);
+    
 
+    
     #ifdef FEATURE_CONNECTION_SHARING
     /*
     * XXX: Should be relocated once it no
@@ -3448,7 +3473,7 @@ static void listen_loop(shadowpath_cb cb, void *data)
         struct client_states *firstCspList;
         struct client_states *secondCspList;
         active_threads = sweep();
-
+        
         csp_list = (struct client_states *)zalloc(sizeof(*csp_list));
         if (NULL == csp_list)
         {
@@ -3471,7 +3496,8 @@ static void listen_loop(shadowpath_cb cb, void *data)
         csp->flags |= CSP_FLAG_ACTIVE;
         csp->server_connection.sfd = JB_INVALID_SOCKET;
         csp->config = config;
-
+        csp->idle_time = 0;
+        
 #ifdef FEATURE_TOGGLE
       if (global_toggle_state)
 #endif /* def FEATURE_TOGGLE */
@@ -3497,11 +3523,20 @@ static void listen_loop(shadowpath_cb cb, void *data)
       }
 #endif /* def FEATURE_ACL */
 
+        log_error(LOG_LEVEL_INFO, "bcm active_conn: %d ", active_threads);
+        
+        if ((0 < config->max_client_connections)
+            && (active_threads >= config->max_client_connections))
+        {
+            sleep(1);
+            active_threads = sweep();
+        }
+        
         if ((0 < config->max_client_connections)
             && (active_threads >= config->max_client_connections))
         {
             log_error(LOG_LEVEL_CONNECT,
-                      "Rejecting connection from %s. Maximum number of connections reached.",
+                      "bcm Rejecting connection from %s. Maximum number of connections reached.",
                       csp->ip_addr_str);
             write_socket(csp->cfd, TOO_MANY_CONNECTIONS_RESPONSE,
                          strlen(TOO_MANY_CONNECTIONS_RESPONSE));

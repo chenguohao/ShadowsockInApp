@@ -979,7 +979,7 @@ struct client_state
     struct reusable_connection server_connection;
 
     /** Multi-purpose flag container, see CSP_FLAG_* above */
-    unsigned int flags;
+    volatile unsigned int flags;
 
     /** Client PC's IP address, as reported by the accept() function.
        As a string. */
@@ -1065,6 +1065,8 @@ struct client_state
     * or NULL. Currently only used for socks errors.
     */
     char *error_message;
+    
+    volatile unsigned int idle_time;
 };
 
 extern struct url_actions *po_url_rules;
