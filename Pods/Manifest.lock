@@ -1,0 +1,84 @@
+PODS:
+  - CocoaAsyncSocket (7.4.3):
+    - CocoaAsyncSocket/All (= 7.4.3)
+  - CocoaAsyncSocket/All (7.4.3):
+    - CocoaAsyncSocket/GCD
+    - CocoaAsyncSocket/RunLoop
+  - CocoaAsyncSocket/GCD (7.4.3)
+  - CocoaAsyncSocket/RunLoop (7.4.3)
+  - CocoaLumberjack/Core (3.0.0)
+  - CocoaLumberjack/Default (3.0.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (3.0.0):
+    - CocoaLumberjack/Default
+  - CocoaLumberjack/Swift (3.0.0):
+    - CocoaLumberjack/Extensions
+  - ICSMainFramework (0.0.1)
+  - KeychainAccess (3.1.2)
+  - KissXML (5.2.3)
+  - LibYAML (0.1.4)
+  - MMWormhole (2.0.0):
+    - MMWormhole/Core (= 2.0.0)
+  - MMWormhole/Core (2.0.0)
+  - PromiseKit (6.8.0):
+    - PromiseKit/CorePromise (= 6.8.0)
+    - PromiseKit/Foundation (= 6.8.0)
+    - PromiseKit/UIKit (= 6.8.0)
+  - PromiseKit/CorePromise (6.8.0)
+  - PromiseKit/Foundation (6.8.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.8.0):
+    - PromiseKit/CorePromise
+  - Realm (2.10.2):
+    - Realm/Headers (= 2.10.2)
+  - Realm/Headers (2.10.2)
+  - RealmSwift (2.10.2):
+    - Realm (= 2.10.2)
+  - YAML-Framework (0.0.3):
+    - LibYAML (~> 0.1.4)
+
+DEPENDENCIES:
+  - CocoaAsyncSocket (~> 7.4.3)
+  - CocoaLumberjack/Swift (~> 3.0.0)
+  - ICSMainFramework (from `./Library/ICSMainFramework/`)
+  - KeychainAccess (~> 3.1.1)
+  - KissXML (~> 5.2.2)
+  - MMWormhole (~> 2.0.0)
+  - PromiseKit
+  - RealmSwift (~> 2.10.2)
+  - YAML-Framework (from `./Library/YAML-Framework`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CocoaAsyncSocket
+    - CocoaLumberjack
+    - KeychainAccess
+    - KissXML
+    - LibYAML
+    - MMWormhole
+    - PromiseKit
+    - Realm
+    - RealmSwift
+
+EXTERNAL SOURCES:
+  ICSMainFramework:
+    :path: "./Library/ICSMainFramework/"
+  YAML-Framework:
+    :path: "./Library/YAML-Framework"
+
+SPEC CHECKSUMS:
+  CocoaAsyncSocket: a18c75dca4b08723628a0bacca6e94803d90be91
+  CocoaLumberjack: c823149bccc5519a9447aeb433be7b1212a7d6a5
+  ICSMainFramework: e2cfdd3bac03573d48c890a70190e9bfac051ed8
+  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
+  KissXML: 09f88ff8161fd058d67b70740b8b516687b52823
+  LibYAML: 3af2c5adf3a40dff936d087aa6a77edc10036bc5
+  MMWormhole: 0cd3fd35a9118b2e2d762b499f54eeaace0be791
+  PromiseKit: 02c93833283c37ce94ef7d25de63d48d62b0754e
+  Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
+  RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
+  YAML-Framework: e63ac91e0494f10022bd311fa3f12d963f6233e7
+
+PODFILE CHECKSUM: c54c7c19ca404621dc72bc697bf21b75e4358a74
+
+COCOAPODS: 1.5.3

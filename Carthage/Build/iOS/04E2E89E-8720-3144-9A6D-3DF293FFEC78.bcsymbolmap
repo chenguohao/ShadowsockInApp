@@ -1,0 +1,1002 @@
+BCSymbolMap Version: 2.0
+Apple LLVM version 10.0.0 (clang-1000.11.45.5)
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/PacketPassInterface.c
+/Users/javis/Downloads/SSDemo 5 3
+_PacketPassInterface_job_done
+DebugObject_Access
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/base/DebugObject.h
+_PacketPassInterface_job_requestcancel
+_PacketPassInterface_job_operation
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/ipv6/nd6.c
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/ipv6/ip6_frag.c
+_BLog_LogToChannel
+_kevent_handler
+_BLog_WouldLog
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/system/BUnixSignal.c
+BLog_WouldLog
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/base/BLog.h
+BUnixSignal_Free
+BFree
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/balloc.h
+DebugObject_Free
+DebugCounter_Decrement
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/debugcounter.h
+kevent_handler
+BLog_LogToChannel
+BLog_Finish
+BMutex_Unlock
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/base/BMutex.h
+BLog_AppendVarArg
+BLog_Begin
+BMutex_Lock
+BUnixSignal_Init
+DebugObject_Init
+DebugCounter_Increment
+BAllocArray
+_output_handler_done
+_schedule_job_handler
+_DebugObject_Init
+_DebugObject_Free
+_input_handler_send
+_DebugCounter_Increment
+_DebugCounter_Decrement
+_PacketPassFairQueue__Tree_Remove
+_schedule
+_PacketPassFairQueue__Tree__Tree_rebalance
+_PacketPassFairQueue__Tree__Tree_rotate
+_PacketPassFairQueue__Tree__Tree_replace_subtree_fix_counts
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/PacketPassFairQueue.c
+PacketPassFairQueue__Tree__Tree_replace_subtree_fix_counts
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/structure/CAvl_impl.h
+PacketPassFairQueue__Tree__Tree_check_parent
+PacketPassFairQueue__Tree__Tree_rotate
+PacketPassFairQueue__Tree__Tree_rebalance
+PacketPassFairQueue__Tree__TreeDeref
+schedule
+PacketPassInterface_Sender_Send
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/PacketPassInterface.h
+PacketPassFairQueue__Tree_GetFirst
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/structure/SAvl_impl.h
+PacketPassFairQueue__Tree__Tree_GetFirst
+PacketPassFairQueue__Tree__Tree_subtree_min
+PacketPassFairQueue__Tree_IsEmpty
+PacketPassFairQueue__Tree__Tree_IsEmpty
+PacketPassFairQueueFlow_GetInput
+PacketPassFairQueueFlow_SetBusyHandler
+PacketPassFairQueueFlow_RequestCancel
+PacketPassInterface_Sender_RequestCancel
+PacketPassFairQueueFlow_IsBusy
+PacketPassFairQueueFlow_AssertFree
+PacketPassFairQueue__Tree_Remove
+PacketPassFairQueue__Tree__Tree_Remove
+PacketPassFairQueue__Tree__Tree_swap_entries
+PacketPassFairQueue__Tree__Tree_subtree_max
+PacketPassFairQueueFlow_Free
+PacketPassInterface_Free
+LinkedList1_Remove
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/structure/LinkedList1.h
+input_handler_send
+PacketPassFairQueue__Tree_Insert
+PacketPassFairQueue__Tree__Tree_Insert
+PacketPassFairQueue__Tree__Tree_compare_entries
+compare_flows
+bmax_uint64
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/minmax.h
+get_current_time
+PacketPassFairQueueFlow_Init
+LinkedList1_Append
+PacketPassInterface_Init
+PacketPassInterface_GetMTU
+PacketPassFairQueue_GetMTU
+PacketPassFairQueue_PrepareFree
+PacketPassFairQueue_Free
+DebugCounter_Free
+LinkedList1_IsEmpty
+schedule_job_handler
+output_handler_done
+PacketPassInterface_Done
+increment_sent_flow
+LinkedList1Node_Next
+LinkedList1_GetFirst
+PacketPassFairQueue_Init
+DebugCounter_Init
+PacketPassInterface_Sender_Init
+PacketPassInterface_HasCancel
+_input_handler_done
+_StreamRecvInterface_Receiver_Recv
+_process_data
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/PacketProtoDecoder.c
+process_data
+PacketProtoDecoder_Reset
+PacketProtoDecoder_Free
+StreamRecvInterface_Receiver_Recv
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/StreamRecvInterface.h
+input_handler_done
+PacketProtoDecoder_Init
+bmin_int
+StreamRecvInterface_Receiver_Init
+_input_handler_requestcancel
+_timer_handler
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flowextra/PacketPassInactivityMonitor.c
+PacketPassInactivityMonitor_Force
+PacketPassInactivityMonitor_SetHandler
+PacketPassInactivityMonitor_GetInput
+PacketPassInactivityMonitor_Free
+timer_handler
+input_handler_requestcancel
+PacketPassInactivityMonitor_Init
+PacketPassInterface_EnableCancel
+_icmp_send_response
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/ipv4/icmp.c
+icmp_time_exceeded
+icmp_send_response
+icmp_dest_unreach
+icmp_input
+_tcpip_tcp_timer
+_ip_reass_timer
+_tcpip_tcp_timer_active
+_timeouts_last_time
+_next_timeout
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/timers.c
+sys_restart_timeouts
+sys_check_timeouts
+sys_untimeout
+ip_reass_timer
+sys_timeouts_init
+tcpip_tcp_timer
+sys_timeout
+tcp_timer_needed
+_tcp_pbuf_prealloc
+_tcp_create_segment
+_tcp_output_alloc_header
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/tcp_out.c
+tcp_zero_window_probe
+tcp_keepalive
+hton32
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/byteorder.h
+badvpn_reverse32
+tcp_rexmit_fast
+tcp_rexmit
+tcp_rexmit_rto
+tcp_rst_impl
+hton16
+badvpn_reverse16
+tcp_output
+tcp_output_segment
+tcp_output_alloc_header
+tcp_send_empty_ack
+tcp_create_segment
+tcp_pbuf_prealloc
+tcp_write
+tcp_seg_add_chksum
+tcp_write_checks
+tcp_enqueue_flags
+tcp_send_fin
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/inet_chksum.c
+lwip_chksum_copy
+inet_chksum_pbuf
+inet_chksum
+inet_chksum_pseudo_partial
+inet_cksum_pseudo_partial_base
+inet_chksum_pseudo
+inet_cksum_pseudo_base
+lwip_standard_chksum
++[TunnelInterface sharedInterface]
+___34+[TunnelInterface sharedInterface]_block_invoke
+-[TunnelInterface init]
++[TunnelInterface setupWithPacketTunnelFlow:]
++[TunnelInterface startTun2Socks:]
++[TunnelInterface stop]
++[TunnelInterface writePacket:]
+___31+[TunnelInterface writePacket:]_block_invoke
+___copy_helper_block_
+___destroy_helper_block_
++[TunnelInterface processPackets]
+___33+[TunnelInterface processPackets]_block_invoke
+___copy_helper_block_.75
+___destroy_helper_block_.76
+-[TunnelInterface _startTun2Socks:]
+-[TunnelInterface handleTCPPPacket:]
+-[TunnelInterface handleUDPPacket:]
+-[TunnelInterface udpSocket:didReceiveData:fromAddress:withFilterContext:]
+-[TunnelInterface strForHost:port:]
+-[TunnelInterface tunnelPacketFlow]
+-[TunnelInterface setTunnelPacketFlow:]
+-[TunnelInterface udpSession]
+-[TunnelInterface setUdpSession:]
+-[TunnelInterface udpSocket]
+-[TunnelInterface setUdpSocket:]
+-[TunnelInterface readFd]
+-[TunnelInterface setReadFd:]
+-[TunnelInterface writeFd]
+-[TunnelInterface setWriteFd:]
+-[TunnelInterface .cxx_destruct]
+_sharedInterface.onceToken
+_sharedInterface.interface
+___block_descriptor_tmp
+___block_literal_global
+_OBJC_IVAR_$_TunnelInterface._udpSession
+_OBJC_IVAR_$_TunnelInterface._udpSocket
+___block_descriptor_tmp.64
+___block_descriptor_tmp.78
+_OBJC_IVAR_$_TunnelInterface._tunnelPacketFlow
+_OBJC_IVAR_$_TunnelInterface._readFd
+_OBJC_IVAR_$_TunnelInterface._writeFd
+l_OBJC_PROTOCOL_$_GCDAsyncUdpSocketDelegate
+l_OBJC_LABEL_PROTOCOL_$_GCDAsyncUdpSocketDelegate
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/TunnelInterface.m
+generateNewIPHeader
+__destroy_helper_block_
+__copy_helper_block_
+__33+[TunnelInterface processPackets]_block_invoke
+__31+[TunnelInterface writePacket:]_block_invoke
+__34+[TunnelInterface sharedInterface]_block_invoke
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/usr/include/dispatch/once.h
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/PacketProtoFlow.c
+PacketProtoFlow_GetInput
+PacketProtoFlow_Free
+PacketProtoFlow_Init
+_ip_reass_free_complete_datagram
+_ip_reass_remove_oldest_datagram
+_ip_reass_dequeue_datagram
+_ipfrag_free_pbuf_custom
+_reassdatagrams
+_ip_reass_pbufcount
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/ipv4/ip_frag.c
+ipfrag_free_pbuf_custom
+ip_frag_free_pbuf_custom_ref
+ip_frag
+ip_frag_alloc_pbuf_custom_ref
+ip_reass_dequeue_datagram
+ip_reass_remove_oldest_datagram
+ip_reass
+ip_reass_chain_frag_into_datagram_and_validate
+ip_reass_enqueue_new_datagram
+ip_reass_free_complete_datagram
+ip_reass_tmr
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/mem.c
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/pbuf.c
+pbuf_strstr
+pbuf_memfind
+pbuf_memcmp
+pbuf_get_at
+pbuf_fill_chksum
+pbuf_coalesce
+pbuf_take
+pbuf_copy_partial
+pbuf_copy
+pbuf_dechain
+pbuf_chain
+pbuf_ref
+pbuf_cat
+pbuf_clen
+pbuf_header
+pbuf_realloc
+pbuf_alloced_custom
+pbuf_free
+pbuf_alloc
+pbuf_pool_is_empty
+pbuf_free_ooseq
+_BLog_SetChannelLoglevel
+_maybe_update_dns
+_signal_handler
+_listener_handler
+_client_free
+_BLog_Begin
+_BLog_AppendVarArg
+_BLog_Finish
+_parse_loglevel
+_BAddr_Parse
+_client_connection_handler
+_client_disconnect_timer_handler
+_PacketPassInterface_Init
+_client_recv_if_handler_send
+_client_decoder_handler_error
+_uint16_comparator
+_client_log
+_PacketPassInterface_Free
+_PacketPassInterface_Done
+_find_connection
+_BAddr_Compare
+_connection_log
+_connection_close
+_connection_send_to_udp
+__BAVL_compare_values
+_BLog_LogViaFuncVarArg
+_connection_logfunc
+_client_logfunc
+_BLog_Append
+_BAddr_Print
+_BIPAddr_Print
+_connection_free
+_BAVL_Remove
+_connection_free_udp
+_connection_send_qflow_busy_handler
+__BAVL_replace_subtree
+__BAVL_rebalance
+__BAVL_rotate
+_btime_gettime
+_connection_first_job_handler
+_connection_dgram_handler_event
+_get_local_num_ports
+_BAddr_SetPort
+_BAddr_GetPort
+_connection_udp_recv_if_handler_send
+_BAddr_GetIPAddr
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/udpgw/udpgw.c
+BAddr_GetIPAddr
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/system/BAddr.h
+BIPAddr_InitInvalid
+BIPAddr_InitIPv6
+BIPAddr_InitIPv4
+BAddr_Assert
+connection_udp_recv_if_handler_send
+connection_send_to_client
+BAddr_GetPort
+BAddr_SetPort
+get_local_num_ports
+connection_dgram_handler_event
+connection_first_job_handler
+btime_gettime
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/system/BTime.h
+_BAVL_rotate
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/structure/BAVL.h
+_BAVL_rebalance
+_BAVL_replace_subtree
+connection_send_qflow_busy_handler
+connection_free_udp
+BAVL_Remove
+_BAVL_swap_nodes
+_BAVL_subtree_max
+connection_free
+BIPAddr_Print
+badvpn_read_be16
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/read_write_int.h
+BAddr_Print
+ntoh16
+BLog_Append
+client_logfunc
+connection_logfunc
+BLog_LogViaFuncVarArg
+_BAVL_compare_values
+connection_send_to_udp
+connection_close
+connection_log
+BAddr_Compare
+find_connection
+BAVL_LookupExact
+_BAVL_node_value
+client_log
+uint16_comparator
+client_decoder_handler_error
+client_recv_if_handler_send
+connection_init
+BAVL_Insert
+_BAVL_compare_nodes
+get_local_addr
+build_port_usage_array_and_find_least_used_connection
+BIPAddr_Compare
+BIPAddr_Assert
+BAllocSize
+BAlloc
+bsize_fromint
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/bsize.h
+BAddr_InitIPv4
+BAddr_InitIPv6
+client_disconnect_timer_handler
+client_connection_handler
+BAddr_Parse
+BAddr_Parse2
+parse_loglevel
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/loglevel.h
+client_free
+listener_handler
+LinkedList1_Init
+BAVL_Init
+BConnection_source_listener
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/system/BConnection.h
+signal_handler
+maybe_update_dns
+BAddr_InitNone
+btime_add
+add_int64_overflows
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/overflow.h
+BLog_SetChannelLoglevel
+udpgw_main
+DebugObjectGlobal_Finish
+BLog_Free
+BMutex_Free
+BTime_Init
+udpgw_compute_mtu
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/protocol/udpgw_proto.h
+bsize_toint
+bsize_add
+process_arguments
+print_version
+print_help
+parse_arguments
+BLogGlobal_GetChannelByName
+open_standard_streams
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/open_standard_streams.h
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/ipv6/ip6_addr.c
+_PacketRecvInterface_Receiver_Recv
+_PacketPassInterface_Sender_Send
+__ChunkBuffer2_assert_buffer
+__ChunkBuffer2_assert_io
+__ChunkBuffer2_update_input
+__ChunkBuffer2_update_output
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/PacketBuffer.c
+_ChunkBuffer2_update_output
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/structure/ChunkBuffer2.h
+bdivide_up
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/balign.h
+_ChunkBuffer2_update_input
+_ChunkBuffer2_end
+_ChunkBuffer2_assert_io
+_ChunkBuffer2_assert_buffer
+PacketBuffer_Free
+PacketRecvInterface_Receiver_Recv
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/PacketRecvInterface.h
+ChunkBuffer2_ConsumePacket
+ChunkBuffer2_SubmitPacket
+PacketBuffer_Init
+ChunkBuffer2_Init
+ChunkBuffer2_calc_blocks
+PacketRecvInterface_GetMTU
+PacketRecvInterface_Receiver_Init
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/system/BTime.c
+clock_gettime_ex
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/PacketRecvInterface.c
+_PacketRecvInterface_job_done
+_PacketRecvInterface_job_operation
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/system/BConnection_common.c
+BConnector_InitUnix
+BLisCon_from_unix
+BConnector_Init
+BLisCon_from_addr
+BListener_InitUnix
+BListener_Init
+_fd_handler
+_DebugError_AssertNoError
+_addr_socket_to_sys
+_send_if_handler_send
+_send_job_handler
+_recv_if_handler_recv
+_recv_job_handler
+_do_send
+_do_recv
+_report_error
+__DebugError_job_handler
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/system/BDatagram_unix.c
+_DebugError_job_handler
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/debugerror.h
+report_error
+do_recv
+PacketRecvInterface_Done
+addr_sys_to_socket
+do_send
+BDatagram_RecvAsync_GetIf
+BDatagram_RecvAsync_Free
+PacketRecvInterface_Free
+recv_job_handler
+recv_if_handler_recv
+BDatagram_RecvAsync_Init
+PacketRecvInterface_Init
+BDatagram_SendAsync_GetIf
+BDatagram_SendAsync_Free
+send_job_handler
+send_if_handler_send
+BDatagram_SendAsync_Init
+BDatagram_SetReuseAddr
+BDatagram_GetFd
+BDatagram_GetLastReceiveAddrs
+BDatagram_SetSendAddrs
+BDatagram_AddressFamilySupported
+addr_socket_to_sys
+DebugError_AssertNoError
+BDatagram_Bind
+BDatagram_Free
+DebugError_Free
+fd_handler
+BDatagram_Init
+DebugError_Init
+set_pktinfo
+badvpn_set_nonblocking
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/nonblocking.h
+family_socket_to_sys
+_ipaddr_ntoa.str
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/ipv4/ip4_addr.c
+ipaddr_ntoa_r
+ipaddr_ntoa
+ipaddr_aton
+ipaddr_addr
+ip4_addr_netmask_valid
+ip4_addr_isbroadcast
+_udpgw_handler_servererror
+_udpgw_handler_received
+_reconnect_timer_handler
+_try_connect
+_free_socks
+_socks_client_handler
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/tun2socks/SocksUdpGwClient.c
+socks_client_handler
+SocksUdpGwClient_SubmitPacket
+free_socks
+SocksUdpGwClient_Free
+try_connect
+reconnect_timer_handler
+udpgw_handler_received
+udpgw_handler_servererror
+SocksUdpGwClient_Init
+_send_data
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/PacketStreamSender.c
+send_data
+StreamPassInterface_Sender_Send
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/StreamPassInterface.h
+PacketStreamSender_GetInput
+PacketStreamSender_Free
+PacketStreamSender_Init
+StreamPassInterface_Sender_Init
+_device_error_handler
+_device_read_handler_send
+_udpgw_client_handler_received
+_lwip_init_job_hadler
+_tcp_timer_handler
+_terminate
+_BIPAddr_Resolve
+_BAddr_Parse2
+_netif_init_func
+_netif_input_func
+_listener_accept_func
+_netif_output_func
+_concat_strings
+_client_socks_handler
+_client_err_func
+_client_recv_func
+_client_free_socks
+_client_socks_send_handler_done
+_client_socks_recv_handler_done
+_client_sent_func
+_client_send_to_socks
+_client_socks_recv_initiate
+_client_free_client
+_client_dealloc
+_client_handle_freed_client
+_StreamPassInterface_Sender_Send
+_client_socks_recv_send_out
+_client_abort_client
+_udp_check
+_udp_checksum
+_udp_ip6_checksum
+_ipv4_checksum
+_udp_checksum_summer
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/tun2socks/tun2socks.c
+udp_checksum_summer
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/udp_proto.h
+ipv4_checksum
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/ipv4_proto.h
+udp_ip6_checksum
+udp_checksum
+udp_check
+client_abort_client
+client_socks_recv_send_out
+client_handle_freed_client
+client_dealloc
+client_free_client
+client_socks_recv_initiate
+client_send_to_socks
+client_sent_func
+client_socks_recv_handler_done
+client_socks_send_handler_done
+client_free_socks
+client_recv_func
+client_err_func
+client_socks_handler
+concat_strings
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/concat_strings.h
+netif_output_func
+common_netif_output
+listener_accept_func
+baddr_from_lwip
+netif_input_func
+netif_init_func
+BIPAddr_Resolve
+terminate
+stop_tun2socks
+tcp_timer_handler
+lwip_init_job_hadler
+udpgw_client_handler_received
+device_read_handler_send
+process_device_udp_packet
+BAddr_MakeIPv6
+ipv6_check
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/ipv6_proto.h
+ipv4_check
+device_error_handler
+tun2socks_main
+client_murder
+read_file
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/read_file.h
+ipaddr6_parse_ipv6_addr
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/ipaddr6.h
+decode_decimal_digit
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/parse_number.h
+decode_hex_digit
+MemRef_MakeCstr
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/memref.h
+_udp_port
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/udp.c
+udp_new
+udp_remove
+udp_recv
+udp_disconnect
+udp_connect
+udp_bind
+udp_new_port
+udp_sendto_if
+udp_sendto_if_chksum
+udp_sendto_chksum
+udp_send_chksum
+udp_sendto
+udp_send
+udp_input
+udp_init
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/base/DebugObject.c
+_output_handler_recv
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/BufferWriter.c
+BufferWriter_EndPacket
+BufferWriter_StartPacket
+BufferWriter_GetOutput
+BufferWriter_Free
+output_handler_recv
+BufferWriter_Init
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/ipv6/icmp6.c
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/base/BPending.c
+BPending_IsSet
+BPending_Unset
+BPending_Set
+BPending_Free
+BPending_Init
+BSmallPending_IsSet
+BPending__ListIsRemoved
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/structure/SLinkedList_impl.h
+BSmallPending_Unset
+BPending__ListMarkRemoved
+BPending__List_Remove
+BSmallPending_Set
+BPending__List_Prepend
+BSmallPending_SetHandler
+BSmallPending_Free
+BSmallPending_Init
+BPendingGroup_PeekJob
+BPending__List_First
+BPendingGroup_ExecuteJob
+BPending__List_RemoveFirst
+BPending__List_IsEmpty
+BPendingGroup_HasJobs
+BPendingGroup_Free
+BPendingGroup_Init
+BPending__List_Init
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/StreamPassInterface.c
+_StreamPassInterface_job_done
+_StreamPassInterface_job_operation
+_build_unix_address
+_listener_fd_handler
+_listener_default_job_handler
+_connector_job_handler
+_connector_fd_handler
+_connection_fd_handler
+_connection_send_if_handler_send
+_connection_send_job_handler
+_connection_recv_if_handler_recv
+_connection_recv_job_handler
+_connection_send
+_connection_recv
+_connection_report_error
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/system/BConnection_unix.c
+connection_report_error
+connection_recv
+StreamRecvInterface_Done
+connection_send
+StreamPassInterface_Done
+BConnection_RecvAsync_GetIf
+BConnection_RecvAsync_Free
+StreamRecvInterface_Free
+connection_recv_job_handler
+connection_recv_if_handler_recv
+BConnection_RecvAsync_Init
+StreamRecvInterface_Init
+BConnection_SendAsync_GetIf
+BConnection_SendAsync_Free
+StreamPassInterface_Free
+connection_send_job_handler
+connection_send_if_handler_send
+BConnection_SendAsync_Init
+StreamPassInterface_Init
+BConnection_SetSendBuffer
+BConnection_SetHandlers
+BConnection_Free
+connection_fd_handler
+BConnection_Init
+BConnector_Free
+connector_fd_handler
+connector_job_handler
+BConnector_InitFrom
+BConnection_AddressSupported
+BListener_Free
+listener_default_job_handler
+listener_fd_handler
+build_unix_address
+BListener_InitFrom
+b_strdup
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/misc/strdup.h
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/PacketProtoEncoder.c
+PacketProtoEncoder_GetOutput
+PacketProtoEncoder_Free
+PacketProtoEncoder_Init
+_unix_signal_handler
+_bsignal_global
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/system/BSignal.c
+BSignal_Finish
+unix_signal_handler
+BSignal_Init
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/ipv6/ip6.c
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/memp.c
+_syslog_log
+_syslog_free
+_syslog_global
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/base/BLog_syslog.c
+syslog_free
+syslog_log
+convert_level
+BLog_InitSyslog
+BLog_Init
+BMutex_Init
+resolve_facility
+_conaddr_comparator
+_send_monitor_handler
+_keepalive_if_handler_done
+_free_server
+_recv_interface_handler_send
+_decoder_handler_error
+_BAddr_CompareOrder
+_BAVL_LookupExact
+_BAVL_Insert
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/udpgw_client/UdpGwClient.c
+BAddr_CompareOrder
+ntoh32
+UdpGwClient_DisconnectServer
+decoder_handler_error
+recv_interface_handler_send
+find_connection_by_conid
+UdpGwClient_ConnectServer
+UdpGwClient_SubmitPacket
+find_unused_conid
+find_connection_by_conaddr
+reuse_connection
+free_server
+UdpGwClient_Free
+keepalive_if_handler_done
+send_monitor_handler
+conaddr_comparator
+UdpGwClient_Init
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/system/BNetwork.c
+BNetwork_Assert
+BNetwork_GlobalInit
+_DebugCounter_Free
+_BReactor__TimersTree_Remove
+_update_kevent_fd_events
+_move_first_timers
+_BReactor__TimersTree_rebalance
+_BReactor__TimersTree_rotate
+_BReactor__TimersTree_replace_subtree_fix_counts
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/system/BReactor_badvpn.c
+BReactor__TimersTree_replace_subtree_fix_counts
+BReactor__TimersTree_check_parent
+BReactor__TimersTree_rotate
+BReactor__TimersTree_rebalance
+BReactor__TimersTreeDeref
+move_first_timers
+BReactor__TimersTree_GetFirst
+BReactor__TimersTree_subtree_min
+BReactorKEvent_Free
+BReactorKEvent_Init
+BReactorLimit_SetLimit
+BReactorLimit_Increment
+BReactorLimit_Free
+BReactorLimit_Init
+BReactor_SetFileDescriptorEvents
+update_kevent_fd_events
+BReactor_RemoveFileDescriptor
+BReactor_AddFileDescriptor
+BReactor_Synchronize
+BReactor_PendingGroup
+BReactor_RemoveTimer
+BReactor_SetTimerAbsolute
+BReactor_SetTimerAfter
+BReactor_SetTimer
+BReactor__TimersTree_Remove
+BReactor__TimersTree_swap_entries
+BReactor__TimersTree_subtree_max
+BReactor_RemoveSmallTimer
+assert_timer
+BReactor_SetSmallTimer
+BReactor__TimersTree_Insert
+BReactor__TimersTree_compare_entries
+compare_timers
+BReactor_Quit
+BReactor_Exec
+wait_for_events
+set_kevent_fd_pointers
+move_expired_timers
+BReactor_Free
+BReactor__TimersTree_IsEmpty
+BReactor_Init
+BReactor__TimersTree_Init
+BTimer_IsRunning
+BTimer_Init
+BSmallTimer_IsRunning
+BSmallTimer_Init
+BFileDescriptor_Init
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/tuntap/BTap.m
+BTap_GetOutput
+BTap_Send
+BTap_GetMTU
+BTap_Free
+BTap_Init2
+BTap_Init
+_tcp_parseopt
+_tcp_receive
+_tcp_oos_insert_segment
+_tcphdr
+_seqno
+_ackno
+_flags
+_tcplen
+_inseg
+_recv_data
+_recv_flags
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/tcp_in.c
+tcp_oos_insert_segment
+tcp_receive
+tcp_parseopt
+tcp_input
+tcp_process
+tcp_listen_input
+tcp_timewait_input
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/init.c
+lwip_init
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/def.c
+_BLog_Init
+_stdout_log
+_stdout_stderr_free
+_stderr_log
+_level_names
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/base/BLog.m
+stderr_log
+BLog_InitStderr
+stdout_stderr_free
+stdout_log
+BLog_InitStdout
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/StreamRecvInterface.c
+_StreamRecvInterface_job_done
+_StreamRecvInterface_job_operation
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/stats.c
+stats_init
+_connector_handler
+_connection_handler
+_reserve_buffer
+_recv_handler_done
+_send_handler_done
+_do_receive
+_auth_finished
+_start_receive
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/socksclient/BSocksClient.c
+start_receive
+auth_finished
+do_receive
+send_handler_done
+recv_handler_done
+init_up_io
+free_control_io
+bsize_fromsize
+reserve_buffer
+BRealloc
+connection_handler
+BSocksClient_GetRecvInterface
+BSocksClient_GetSendInterface
+BSocksClient_Free
+free_up_io
+connector_handler
+init_control_io
+BConnection_source_connector
+BSocksClient_Init
+BAddr_IsInvalid
+BSocksClient_auth_password
+BSocksClient_auth_none
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/PacketPassConnector.c
+PacketPassConnector_DisconnectOutput
+PacketPassConnector_ConnectOutput
+PacketPassConnector_GetInput
+PacketPassConnector_Free
+PacketPassConnector_Init
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/flow/SinglePacketBuffer.c
+SinglePacketBuffer_Free
+SinglePacketBuffer_Init
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/custom/sys.c
+sys_now
+_tcp_close_shutdown
+_tcp_new_port
+_tcp_accept_null
+_tcp_timer_ctr
+_tcp_next_iss.iss
+_tcp_port
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/tcp.c
+tcp_debug_print_pcbs
+tcp_debug_print_flags
+tcp_debug_print
+tcp_debug_state_str
+tcp_pcbs_sane
+tcp_poll
+tcp_accept
+tcp_err
+tcp_sent
+tcp_recv
+tcp_arg
+tcp_new
+tcp_alloc
+tcp_next_iss
+tcp_kill_prio
+tcp_abort
+tcp_kill_timewait
+tcp_seg_copy
+tcp_setprio
+tcp_seg_free
+tcp_recv_null
+tcp_close
+tcp_process_refused_data
+tcp_pcb_purge
+tcp_segs_free
+tcp_eff_send_mss_impl
+tcp_connect
+tcp_recved
+tcp_update_rcv_ann_wnd
+tcp_accept_null
+tcp_listen_with_backlog
+tcp_bind_to_netif
+tcp_new_port
+tcp_bind
+tcp_pcb_remove
+tcp_abandon
+tcp_shutdown
+tcp_close_shutdown
+tcp_debug_print_state
+tcp_slowtmr
+tcp_fasttmr
+tcp_tmr
+tcp_init
+_netif_num
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/netif.c
+netif_set_link_down
+netif_set_link_up
+netif_set_up
+netif_set_pretend_tcp
+netif_is_named
+netif_find
+netif_set_default
+netif_set_down
+netif_remove
+netif_set_gw
+netif_set_netmask
+netif_set_ipaddr
+netif_set_addr
+netif_add
+netif_init
+_ip_id
+/Users/javis/Downloads/SSDemo 5 3/PacketProcessor/tun2socks-iOS/lwip/src/core/ipv4/ip4.c
+ip_output
+ip_output_if
+ip_debug_print
+ip_input
+ip_route
+/Users/javis/Library/Developer/Xcode/DerivedData/SSDemo-ftohxbaooczudbewkzqyphexdjmb/Build/Intermediates.noindex/ArchiveIntermediates/PacketProcessor/IntermediateBuildFilesPath/SSDemo.build/Release-iphoneos/PacketProcessor.build/DerivedSources/PacketProcessor_vers.c

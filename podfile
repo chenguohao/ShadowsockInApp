@@ -1,0 +1,53 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '9.0'
+use_frameworks!
+
+def socket
+    pod 'CocoaAsyncSocket', '~> 7.4.3'
+end
+
+def tunnel
+    pod 'MMWormhole', '~> 2.0.0'
+end
+
+def library
+    pod 'KissXML', '~> 5.2.2'
+    pod 'ICSMainFramework', :path => "./Library/ICSMainFramework/"
+    pod 'KeychainAccess', '~> 3.1.1'
+end
+
+def model
+    pod 'RealmSwift', '~> 2.10.2'
+end
+
+target "PacketProcessor" do
+  socket
+end
+
+target "SSDemo" do
+    pod 'CocoaLumberjack/Swift', '~> 3.0.0'
+    pod 'PromiseKit'
+    tunnel
+    socket
+    library
+    model
+end
+
+target "VPN" do
+    tunnel
+    socket
+end
+
+target "PotatsoModel" do
+    model
+end
+
+target "PotatsoLibrary" do
+    library
+    pod 'YAML-Framework', :path => "./Library/YAML-Framework"
+    tunnel
+    model
+end
+
+

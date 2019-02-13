@@ -1,0 +1,11 @@
+framework module PotatsoLibrary {
+  umbrella header "PotatsoLibrary.h"
+
+  export *
+  module * { export * }
+}
+
+module PotatsoLibrary.Swift {
+    header "PotatsoLibrary-Swift.h"
+    requires objc
+}

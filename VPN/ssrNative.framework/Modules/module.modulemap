@@ -1,0 +1,6 @@
+framework module ssrNative {
+  umbrella header "ssrNative.h"
+
+  export *
+  module * { export * }
+}
