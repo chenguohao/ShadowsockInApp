@@ -61,6 +61,8 @@
 #define LOG_LEVEL_ERROR   0x2000
 #define LOG_LEVEL_FATAL   0x4000 /* Exits after writing log */
 
+typedef void (*logCallback)(char* str);
+
 extern void init_error_log(const char *prog_name, const char *logfname);
 extern void set_debug_level(int debuglevel);
 extern int  debug_level_is_enabled(int debuglevel);
@@ -70,6 +72,7 @@ extern void show_version(const char *prog_name);
 extern void log_error(int loglevel, const char *fmt, ...);
 extern const char *jb_err_to_string(int jb_error);
 
+extern void setupLogCallback(logCallback cb);
 /* Revision control strings from this header and associated .c file */
 extern const char errlog_rcs[];
 extern const char errlog_h_rcs[];

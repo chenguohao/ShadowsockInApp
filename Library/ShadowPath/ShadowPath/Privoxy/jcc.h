@@ -119,6 +119,9 @@ extern void log_request_error(struct client_state *csp, int error_code);
 extern const char jcc_rcs[];
 extern const char jcc_h_rcs[];
 
+typedef void (*shadowsocks_logcb) (char* str);
+void setLogCallback(shadowsocks_logcb cb);
+
 #endif /* ndef JCC_H_INCLUDED */
 
 /*

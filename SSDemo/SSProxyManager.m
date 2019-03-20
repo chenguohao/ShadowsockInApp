@@ -43,6 +43,10 @@ void shadowsocks_handler(int fd, void *udata) {
     [provider onShadowsocksCallback:fd];
 }
 
+void shadowsocks_logCallback(char* str){
+    NSLog(@"[SSVPN]%s",str);
+}
+
 int sock_port (int fd) {
     struct sockaddr_in sin;
     socklen_t len = sizeof(sin);
@@ -130,6 +134,7 @@ int sock_port (int fd) {
         if (obfs_param.length > 0) {
             profile.obfs_param = strdup([obfs_param UTF8String]);
         }
+        setLogCallback(shadowsocks_logCallback);
         start_ss_local_server(profile, shadowsocks_handler, (__bridge void *)self);
     }else {
 //        DDLogInfo(@"shadowsocks 配置文件读取失败");

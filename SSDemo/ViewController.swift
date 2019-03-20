@@ -31,7 +31,10 @@ class ViewController: UIViewController {
         
         upstreamProxy.type = .Shadowsocks
         upstreamProxy.name = "SSR-name"
-        upstreamProxy.host = ""
+        upstreamProxy.host = "14.116.173.58"
+        upstreamProxy.port = 999
+        upstreamProxy.authscheme = "rc4-md5"
+        upstreamProxy.password = "bcmbcm880"
         
         do {
             try DBUtils.add(upstreamProxy)

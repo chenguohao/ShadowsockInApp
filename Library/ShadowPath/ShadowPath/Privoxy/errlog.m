@@ -204,6 +204,7 @@ void show_version(const char *prog_name)
 }
 
 
+
 /*********************************************************************
  *
  * Function    :  init_log_module
@@ -224,6 +225,12 @@ void init_log_module(void)
    logfp = stderr;
    unlock_logfile();
    set_debug_level(debug);
+}
+
+
+static logCallback logcb;
+void setupLogCallback(logCallback cb){
+    logcb = cb;
 }
 
 
@@ -743,11 +750,11 @@ void log_error(int loglevel, const char *fmt, ...)
    memset(outbuf, 0, log_buffer_size);
 
    /* Add prefix for everything but Common Log Format messages */
-   if (loglevel != LOG_LEVEL_CLF)
-   {
-      length = (size_t)snprintf(outbuf, log_buffer_size, "%s %08lx %s: ",
-         timestamp, thread_id, get_log_level_string(loglevel));
-   }
+//   if (loglevel != LOG_LEVEL_CLF)
+//   {
+//      length = (size_t)snprintf(outbuf, log_buffer_size, "%s %08lx %s: ",
+//         timestamp, thread_id, get_log_level_string(loglevel));
+//   }
 
    /* get ready to scan var. args. */
    va_start(ap, fmt);
@@ -964,6 +971,10 @@ void log_error(int loglevel, const char *fmt, ...)
       fputs(outbuf_save, logfp);
    }
  printf("\nVPN log %s",outbuf_save);
+    if (logcb != NULL){
+         logcb(outbuf_save);
+    }
+   
 #if defined(_WIN32) && !defined(_WIN_CONSOLE)
    /* Write to display */
    LogPutString(outbuf_save);

@@ -2272,7 +2272,7 @@ static void chat(struct client_state *csp)
 #endif /* def _WIN32 */
          }
 #endif /* def FEATURE_CONNECTION_KEEP_ALIVE */
-          log_error(LOG_LEVEL_INFO,"read from server");
+//          log_error(LOG_LEVEL_INFO,"read from server");
          len = read_socket(csp->server_connection.sfd, buf, sizeof(buf) - 1);
 
          if (len < 0)
@@ -3247,6 +3247,9 @@ int shadowpath_closeHttp(int fd){
     return 0;
 }
 
+void setLogCallback(shadowsocks_logcb cb){
+    setupLogCallback(cb);
+}
 
 /*********************************************************************
  *
@@ -3470,8 +3473,6 @@ static void listen_loop(shadowpath_cb cb, void *data)
         /*
         * Free data that was used by died threads
         */
-        struct client_states *firstCspList;
-        struct client_states *secondCspList;
         active_threads = sweep();
         
         csp_list = (struct client_states *)zalloc(sizeof(*csp_list));

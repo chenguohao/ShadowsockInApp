@@ -73,7 +73,7 @@ extern "C" {
 #endif
 
     typedef void (*shadowsocks_cb) (int fd, void*);
-
+ 
     /*
      * Create and start a shadowsocks local server.
      *
@@ -86,7 +86,7 @@ extern "C" {
      * If failed, -1 is returned. Errors will output to the log file.
      */
     int start_ss_local_server(profile_t profile, shadowsocks_cb cb, void *data);
-
+    
 #ifdef __cplusplus
 }
 #endif
