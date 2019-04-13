@@ -1628,7 +1628,8 @@ int start_ss_local_server(profile_t profile, shadowsocks_cb cb, void *data)
         LOGI("udprelay enabled");
         struct sockaddr *addr = (struct sockaddr *)storage;
         init_udprelay(local_addr, local_port_str, addr,
-                      get_sockaddr_len(addr), mtu, m, auth, timeout, NULL);
+                      (int)get_sockaddr_len(addr), mtu, m, auth,
+                      timeout, NULL);
     }
 
     LOGI("listening at %s:%s", local_addr, local_port_str);
@@ -1670,6 +1671,170 @@ int start_ss_local_server(profile_t profile, shadowsocks_cb cb, void *data)
 
     // cannot reach here
     return 0;
+}
+
+// -----------------------------------------------------------------------------
+// Section: ss_local_svr
+// -----------------------------------------------------------------------------
+struct ss_local_svr {
+    struct ev_loop* loop;
+    struct listen_ctx listen_ctx;
+};
+
+struct ss_local_svr* ss_local_svr__new() {
+    struct ss_local_svr* ss =
+        (struct ss_local_svr*)malloc(sizeof(struct ss_local_svr));
+    return ss;
+}
+
+void ss_local_svr__destroy(struct ss_local_svr* ss) {
+    free(ss);
+}
+
+// Returns 0 if server is successfully started and callback function will
+// be called; returns -1 upon failure.
+int ss_local_svr__start(struct ss_local_svr* ss, const profile_t* profile,
+                       ss_start_callback cb, void* udata) {
+    srand((unsigned)time(NULL));
+
+    char *remote_host = profile->remote_host;
+    char *local_addr  = profile->local_addr;
+    char *method      = profile->method;
+    char *password    = profile->password;
+    char *log         = profile->log;
+    int remote_port   = profile->remote_port;
+    int local_port    = profile->local_port;
+    int timeout       = profile->timeout;
+    char *protocol    = profile->protocol; // SSR
+    char *obfs        = profile->obfs; // SSR
+    char *obfs_param  = profile->obfs_param; // SSR
+    int mtu           = 0;
+    int mptcp         = 0;
+
+    auth      = profile->auth;
+    if (protocol != NULL && strcmp(protocol, "verify_sha1") == 0) {
+        auth = 1;
+    }
+    mode      = profile->mode;
+    fast_open = profile->fast_open;
+    verbose   = profile->verbose;
+    mtu       = profile->mtu;
+    mptcp     = profile->mptcp;
+
+    char local_port_str[16];
+    char remote_port_str[16];
+    sprintf(local_port_str, "%d", local_port);
+    sprintf(remote_port_str, "%d", remote_port);
+
+//    USE_LOGFILE(log);
+
+    if (profile->acl != NULL) {
+        acl = !init_acl(profile->acl, BLACK_LIST);
+    }
+
+    if (local_addr == NULL) {
+        local_addr = "127.0.0.1";
+    }
+    
+    ss->loop = ev_loop_new(0);
+
+    // Setup keys
+    int m = enc_init(password, method);
+
+    struct sockaddr_storage *storage = ss_malloc(sizeof(struct sockaddr_storage));
+    memset(storage, 0, sizeof(struct sockaddr_storage));
+    if (get_sockaddr(remote_host, remote_port_str, storage, 1) == -1) {
+        return -1;
+    }
+
+    // Setup proxy context
+    struct ev_loop *loop = ss->loop;
+    int remote_num = 1;
+
+    ss->listen_ctx.remote_num     = 1;
+    ss->listen_ctx.remote_addr    = ss_malloc(sizeof(struct sockaddr *));
+    ss->listen_ctx.remote_addr[0] = (struct sockaddr *)storage;
+    ss->listen_ctx.timeout        = timeout;
+    ss->listen_ctx.method         = m;
+    ss->listen_ctx.iface          = NULL;
+    ss->listen_ctx.mptcp          = mptcp;
+
+    // SSR beg
+    ss->listen_ctx.fd = 0;
+    ss->listen_ctx.protocol_name = protocol;
+    ss->listen_ctx.method = m;
+    ss->listen_ctx.obfs_name = obfs;
+    ss->listen_ctx.obfs_param = obfs_param;
+    ss->listen_ctx.list_protocol_global = malloc(sizeof(void *) * remote_num);
+    ss->listen_ctx.list_obfs_global = malloc(sizeof(void *) * remote_num);
+    memset(ss->listen_ctx.list_protocol_global, 0, sizeof(void *) * remote_num);
+    memset(ss->listen_ctx.list_obfs_global, 0, sizeof(void *) * remote_num);
+    // SSR end
+
+    if (mode != UDP_ONLY) {
+        // Setup socket
+        int listenfd;
+        listenfd = create_and_bind(local_addr, local_port_str);
+        if (listenfd == -1) {
+            ERROR("bind()");
+            return -1;
+        }
+        if (listen(listenfd, SOMAXCONN) == -1) {
+            ERROR("listen()");
+            return -1;
+        }
+        setnonblocking(listenfd);
+
+        ss->listen_ctx.fd = listenfd;
+
+        ev_io_init(&ss->listen_ctx.io, accept_cb, listenfd, EV_READ);
+        ev_io_start(loop, &ss->listen_ctx.io);
+    }
+
+    // Setup UDP
+    if (mode != TCP_ONLY) {
+        LOGI("udprelay enabled");
+        struct sockaddr *addr = (struct sockaddr *)storage;
+        init_udprelay(local_addr, local_port_str, addr,
+                      (int)get_sockaddr_len(addr), mtu, m, auth,
+                      timeout, NULL);
+    }
+
+    // Init connections
+    cork_dllist_init(&connections);
+
+    cb(ss, udata);
+
+    // Enter the loop
+    ev_run(loop, 0);
+
+    // Clean up
+    if (mode != TCP_ONLY) {
+        free_udprelay();
+    }
+
+    if (mode != UDP_ONLY) {
+        ev_io_stop(loop, &ss->listen_ctx.io);
+        free_connections(loop);
+        close(ss->listen_ctx.fd);
+    }
+
+    ss_free(ss->listen_ctx.remote_addr);
+    ev_loop_destroy(ss->loop);
+    ss->loop = NULL;
+
+    // cannot reach here
+    return 0;
+}
+
+void ss_local_svr__stop(struct ss_local_svr* ss) {
+    ev_break(ss->loop, EVBREAK_ALL);
+    ev_io_stop(ss->loop, &ss->listen_ctx.io);
+    close(ss->listen_ctx.fd);
+}
+
+int ss_local_svr__listenfd(struct ss_local_svr* ss) {
+    return ss->listen_ctx.fd;
 }
 
 #endif

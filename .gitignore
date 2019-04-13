@@ -1,0 +1,7 @@
+.idea
+*.pbxproj
+**/*xcuserdatad*
+
+# Pod stuffs
+Pods/*
+Podfile.lock

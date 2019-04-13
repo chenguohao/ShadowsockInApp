@@ -19,6 +19,14 @@ class ShadowsockManager: NSObject {
     
     @objc public static let shared = ShadowsockManager()
     
+    override init() {
+        super.init();
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(onEnterBackGround),
+            name: NSNotification.Name.UIApplicationDidEnterBackground,
+            object: nil)
+    }
+    
     // 标记 APP 内是否走 SS， SS 关闭是比较麻烦的 所以开启后 没有关闭 以此标志位来表示走不走 SS
     @objc var shouldOpenSS: Bool {
         get {
@@ -87,7 +95,9 @@ class ShadowsockManager: NSObject {
         SSProxyManager.shared()?.stopHttpProxy()
     }
 
-    
-   
+    @objc
+    func onEnterBackGround(){
+        closeSS()
+    }
 }
 

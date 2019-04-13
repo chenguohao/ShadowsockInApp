@@ -1794,7 +1794,7 @@ static void chat(struct client_state *csp)
       return;
     }
     printf("VPN log chat port %s,ssl %d\n",http->hostport,http->ssl);
-    add_log_csp(csp);
+//    add_log_csp(csp);
 
     /* decide how to route the HTTP request */
     fwd = forward_url(csp, http);
@@ -3722,6 +3722,14 @@ static void listen_loop(shadowpath_cb cb, void *data)
 #ifdef FEATURE_TRUST
    unload_current_trust_file();
 #endif
+    
+    {
+        struct client_states* client_list_entry = clients->next;
+        while (NULL != client_list_entry) {
+            close_socket(client_list_entry->csp.cfd);
+            client_list_entry = client_list_entry->next;
+        }
+    }
 
    if (config->multi_threaded)
    {
@@ -3750,7 +3758,7 @@ static void listen_loop(shadowpath_cb cb, void *data)
 #endif
 
 //   exit(0);
-    pthread_exit(0);
+//    pthread_exit(0);
 #endif /* FEATURE_GRACEFUL_TERMINATION */
 
 }

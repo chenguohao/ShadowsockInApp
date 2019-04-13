@@ -96,4 +96,26 @@ extern "C" {
 // Otherwise, If you start the service in a thread, you may need to send a signal SIGUSER1 to the thread.
 // pthread_kill(pthread_t, SIGUSR1);
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+    struct ss_local_svr;
+    typedef void (*ss_start_callback)(struct ss_local_svr* s, void* udata);
+    
+    struct ss_local_svr* ss_local_svr__new();
+    void ss_local_svr__destroy(struct ss_local_svr* ss);
+    
+    // Returns 0 if server is successfully started and callback function will
+    // be called; returns -1 upon failure.
+    int ss_local_svr__start(struct ss_local_svr* ss, const profile_t* profile,
+                           ss_start_callback cb, void* udata);
+    void ss_local_svr__stop(struct ss_local_svr* ss);
+    
+    int ss_local_svr__listenfd(struct ss_local_svr* ss);
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif // _SHADOWSOCKS_H

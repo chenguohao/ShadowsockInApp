@@ -15,7 +15,10 @@
 #import <PotatsoBase/NSError+Helper.h>
 #import <PotatsoBase/Settings.h>
 
-@interface SSProxyManager ()
+@interface SSProxyManager () {
+    struct ss_local_svr* _ssLocalSvr;
+}
+
 @property (nonatomic) BOOL socksProxyRunning;
 @property (nonatomic) int socksProxyPort;
 @property (nonatomic) BOOL httpProxyRunning;
@@ -43,6 +46,13 @@ void shadowsocks_handler(int fd, void *udata) {
     [provider onShadowsocksCallback:fd];
 }
 
+void shadowsocks_start_callback(struct ss_local_svr* ss, void* udata) {
+    SSProxyManager *provider = (__bridge SSProxyManager*)udata;
+    int listenfd = ss_local_svr__listenfd(ss);
+    provider.shadowsocksThread = pthread_self();
+    [provider onShadowsocksCallback:listenfd];
+}
+
 void shadowsocks_logCallback(char* str){
     NSLog(@"[SSVPN]%s",str);
 }
@@ -68,6 +78,20 @@ int sock_port (int fd) {
         manager = [SSProxyManager new];
     });
     return manager;
+}
+
+- (SSProxyManager*)init {
+    self = [super init];
+    if (self != nil) {
+        _ssLocalSvr = ss_local_svr__new();
+        _shadowsocksProxyRunning = NO;
+        _httpProxyRunning = NO;
+    }
+    return self;
+}
+
+- (void)dealloc {
+    ss_local_svr__destroy(_ssLocalSvr);
 }
 
 - (void)startSocksProxy:(SocksProxyCompletion)completion {
@@ -135,19 +159,29 @@ int sock_port (int fd) {
             profile.obfs_param = strdup([obfs_param UTF8String]);
         }
         setLogCallback(shadowsocks_logCallback);
-        start_ss_local_server(profile, shadowsocks_handler, (__bridge void *)self);
+//        start_ss_local_server(profile, shadowsocks_handler, (__bridge void *)self);
+        ss_local_svr__start(_ssLocalSvr, &profile, shadowsocks_start_callback,
+                            (__bridge void*)self);
+        
+        NSLog(@"sslocal: ss local server terminated gracefully");
+        self.shadowsocksProxyRunning = NO;
+        
     }else {
-//        DDLogInfo(@"shadowsocks 配置文件读取失败");
-        if (self.shadowsocksCompletion) {
-            self.shadowsocksCompletion(0, nil);
-        }
+        __weak __typeof(self) weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            __strong __typeof(self) strongSelf = weakSelf;
+            if (strongSelf.shadowsocksCompletion) {
+                strongSelf.shadowsocksCompletion(0, nil);
+            }
+        });
         return;
     }
 }
 
 - (void)stopShadowsocks{
     if (self.shadowsocksThread != nil) {
-        pthread_cancel(self.shadowsocksThread);
+        NSLog(@"sslocal: stop ss local server");
+        ss_local_svr__stop(_ssLocalSvr);
         self.shadowsocksThread = nil;
     }
 }
@@ -158,13 +192,18 @@ int sock_port (int fd) {
         self.shadowsocksProxyPort = sock_port(fd);
         self.shadowsocksProxyRunning = YES;
 //        DDLogInfo(@"shadowsocksProxyRunning = YES");
+        NSLog(@"sslocal: ss local server is running");
     }else {
         error = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:100 userInfo:@{NSLocalizedDescriptionKey: @"Fail to start http proxy"}];
 //        DDLogInfo(@"shadowsocksProxy 启动失败 error %@", error);
     }
-    if (self.shadowsocksCompletion) {
-        self.shadowsocksCompletion(self.shadowsocksProxyPort, error);
-    }
+    __weak __typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        __strong __typeof(self) strongSelf = weakSelf;
+        if (strongSelf.shadowsocksCompletion) {
+            strongSelf.shadowsocksCompletion(strongSelf.shadowsocksProxyPort, error);
+        }
+    });
 }
 
 # pragma mark - Http Proxy
@@ -184,9 +223,14 @@ int sock_port (int fd) {
         proxy->gateway_port = self.shadowsocksProxyPort;
     }
     shadowpath_main(strdup([[confURL path] UTF8String]), proxy, http_proxy_handler, (__bridge void *)self);
+    
+    NSLog(@"privoxy: http proxy server terminated gracefully");
+    self.httpProxyRunning = NO;
+    
 }
 
 - (void)stopHttpProxy{
+    NSLog(@"privoxy: stop http proxy");
     shadowpath_closeHttp(self.http_fd);
 }
 
@@ -196,12 +240,18 @@ int sock_port (int fd) {
         self.http_fd = fd;
         self.httpProxyPort = sock_port(fd);
         self.httpProxyRunning = YES;
+        
+        NSLog(@"privoxy: http proxy is running");
     }else {
         error = [NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:100 userInfo:@{NSLocalizedDescriptionKey: @"Fail to start http proxy"}];
     }
-    if (self.httpCompletion) {
-        self.httpCompletion(self.httpProxyPort, error);
-    }
+    __weak __typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        __strong __typeof(self) strongSelf = weakSelf;
+        if (strongSelf.httpCompletion) {
+            strongSelf.httpCompletion(strongSelf.httpProxyPort, error);
+        }
+    });
 }
 @end
 
