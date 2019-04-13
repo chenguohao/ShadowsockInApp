@@ -2,5 +2,5 @@
 **/*xcuserdatad*
 
 # Pod stuffs
-Pods/*
-Podfile.lock
+# Pods/*
+# Podfile.lock
